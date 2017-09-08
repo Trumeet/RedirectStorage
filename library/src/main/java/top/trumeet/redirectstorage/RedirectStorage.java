@@ -19,8 +19,6 @@ import java.util.List;
  * 如果需要获取没有重定向的真实目录，请使用 {@link RedirectStorage#getRealPath()}
  *
  * 特别感谢 little_cup 提供核心代码，我仅仅做了个简单封装和修改
- * 使用了 <a href="https://github.com/anggrayudi/android-hidden-api">
- *     android-hidden-api</a>
  * @author Trumeet
  */
 
