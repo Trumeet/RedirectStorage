@@ -56,7 +56,7 @@ getRealPath()
 # Licenses
 使用本項目請確保您遵守 `Apache License 2.0`，本项目使用 [android-hidden-api](https://github.com/anggrayudi/android-hidden-api) 项目。
 
-**特别感谢 [@heruoxin](https://github.com/heruoxin) （冰箱作者）提供核心代码~~，我只是做了个简单封装和提供了几个接口 逃跑~~**
+**特别感谢 [@heruoxin](https://github.com/heruoxin) （冰箱作者）提供核心代码 ~~，我只是做了个简单封装和提供了几个接口 逃跑~~**
 
 ```
 Copyright (C) 2017 Trumeet
