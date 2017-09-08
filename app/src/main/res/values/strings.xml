@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RedirectStorage</string>
+
+    <string name="text">
+        <![CDATA[
+        <code>getExternalStorageDirectory</code>: %1$s
+        <br /><code>isEnable</code>: %2$s
+        <br /><code>getRealPath</code>: %3$s
+]]>
+    </string>
+</resources>
