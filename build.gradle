@@ -17,11 +17,6 @@ buildscript {
 }
 
 allprojects {
-    gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
-            options.compilerArgs.add('-Xbootclasspath/p:app\\lib\\classes.jar')
-        }
-    }
     repositories {
         google()
         jcenter()

@@ -1,7 +1,5 @@
 package top.trumeet.redirectstorage;
 
-import android.annotation.NonNull;
-import android.annotation.Nullable;
 import android.os.Environment;
 
 import java.io.File;
@@ -55,7 +53,6 @@ public class RedirectStorage {
      * 获取真实目录，比如需要保存图片等
      * @return 真实存储卡目录
      */
-    @NonNull
     public static File getRealPath () {
         try {
             UserEnvironmentWrapper wrapper = getInstalledWrapper();
@@ -95,7 +92,6 @@ public class RedirectStorage {
      * 获取已安装的 Wrapper
      * @return 已安装的 Wrapper
      */
-    @Nullable
     private static UserEnvironmentWrapper getInstalledWrapper ()
     throws NoSuchMethodException, ClassNotFoundException,
             NoSuchFieldException, IllegalAccessException{
