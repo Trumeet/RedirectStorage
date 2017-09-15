@@ -1,7 +1,5 @@
 package android.os;
 
-import android.os.storage.StorageVolume;
-
 import java.io.File;
 
 /**
@@ -67,6 +65,11 @@ public class Environment {
 
     public static class UserEnvironment {
         private final int mUserId;
+
+        /**
+         * For Lollipop +
+         * @param userId uid
+         */
         public UserEnvironment(int userId) {
             mUserId = userId;
         }
