@@ -1,6 +1,8 @@
 package top.trumeet.redirectstorage;
 
+import android.os.Build;
 import android.os.Environment;
+import android.util.Log;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -22,6 +24,8 @@ import top.trumeet.redirectstorage.wrapper.AbstractWrapper;
 
 @SuppressWarnings("unused")
 public class RedirectStorage {
+    private static final String TAG = RedirectStorage.class.getSimpleName();
+
     /**
      * 安装并启用。
      * @param pathSuffix 合并到原目录后面的路径。比如说要重定向到
@@ -142,8 +146,14 @@ public class RedirectStorage {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            sCurrentUserField.set(null, AbstractWrapper.getWrapper(o,
-                    target, user));
+            AbstractWrapper abstractWrapper = AbstractWrapper.getWrapper(o,
+                    target, user);
+            if (abstractWrapper == null) {
+                Log.e(TAG, "Can not create wrapper, it looks like not support your ROM: " +
+                        Build.VERSION.SDK_INT);
+                return;
+            }
+            sCurrentUserField.set(null, abstractWrapper);
         }
     }
 }
