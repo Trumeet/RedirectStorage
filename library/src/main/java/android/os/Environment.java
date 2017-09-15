@@ -108,5 +108,23 @@ public class Environment {
         public File[] buildExternalStorageAppCacheDirs(String packageName) {
             throw new RuntimeException("Stub!");
         }
+        public File[] getExternalDirsForVold() {
+            throw new RuntimeException("Stub!");
+        }
+        public File[] getExternalDirsForApp() {
+            throw new RuntimeException("Stub!");
+        }
+        public File getMediaDir() {
+            throw new RuntimeException("Stub!");
+        }
+        public File[] buildExternalStorageAppDataDirsForVold(String packageName) {
+            throw new RuntimeException("Stub!");
+        }
+        public File[] buildExternalStorageAppMediaDirsForVold(String packageName) {
+            throw new RuntimeException("Stub!");
+        }
+        public File[] buildExternalStorageAppObbDirsForVold(String packageName) {
+            throw new RuntimeException("Stub!");
+        }
     }
 }

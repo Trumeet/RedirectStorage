@@ -1,19 +1,20 @@
 package top.trumeet.redirectstorage.wrapper;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Environment;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Trumeet on 2017/9/15.
  * Wrapper for marshmallow+
  */
 
-class UserEnvironmentWrapperMarshmallow extends AbstractWrapper {
+@TargetApi(Build.VERSION_CODES.M)
+class WrapperMM extends AbstractWrapper {
 
-    UserEnvironmentWrapperMarshmallow(Environment.UserEnvironment ue, int userId, String customPath) {
+    WrapperMM(Environment.UserEnvironment ue, int userId, String customPath) {
         super(ue, userId, customPath);
     }
 
@@ -26,13 +27,7 @@ class UserEnvironmentWrapperMarshmallow extends AbstractWrapper {
         File[] dirs = mBase.getExternalDirs();
         if (!mEnable)
             return dirs;
-        if (dirs == null || dirs.length == 0)
-            return dirs;
-        List<File> list = new ArrayList<>(dirs.length);
-        for (File file : dirs) {
-            list.add(new File(file.getAbsolutePath() + mCustomPath));
-        }
-        return list.toArray(new File[list.size()]);
+        return convertDirs(dirs);
     }
 
     public File getRealExternalStorageDirectory () {
