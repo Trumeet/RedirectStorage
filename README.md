@@ -51,7 +51,9 @@ getRealPath()
 
 ```
 
-**尚未严格兼容性测试，目前 Android O 模拟器测试通过，有问题请提交 issues**
+**尚未严格兼容性测试，目前 Android O 模拟器测试通过，理论上支持 KitKat 至 Oreo。有问题请提交 issues**
+
+不支持 KitKat 以下 ROM。（哪位大佬能帮忙想出办法兼容，个人认为主要是 `[getDirectory](https://github.com/android/platform_frameworks_base/blob/jb-release/core/java/android/os/Environment.java#L471)`` 方法，感激不尽。）
 
 # Licenses
 使用本項目請確保您遵守 `Apache License 2.0`
