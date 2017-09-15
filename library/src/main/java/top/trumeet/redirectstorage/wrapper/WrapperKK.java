@@ -19,7 +19,7 @@ class WrapperKK extends AbstractWrapper {
 
     @Override
     public File getRealExternalStorageDirectory() {
-        return null;
+        return mBase.getExternalStorageDirectory();
     }
 
     private File convert (File dir) {
