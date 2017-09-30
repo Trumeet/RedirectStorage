@@ -8,6 +8,9 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.io.File;
+
+import top.trumeet.redirectstorage.PathCallback;
 import top.trumeet.redirectstorage.RedirectStorage;
 
 public class MainActivity extends Activity {
@@ -25,9 +28,12 @@ public class MainActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    RedirectStorage.enable(getExternalFilesDir(null)
-                    .getAbsolutePath().substring(RedirectStorage.getRealPath().getAbsolutePath()
-                            .length()));
+                    RedirectStorage.enable(new PathCallback() {
+                        @Override
+                        public File onModify(File original) {
+                            return getFilesDir();
+                        }
+                    });
                 } else {
                     RedirectStorage.disable();
                 }

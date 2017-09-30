@@ -6,6 +6,8 @@ import android.os.Environment;
 
 import java.io.File;
 
+import top.trumeet.redirectstorage.PathCallback;
+
 /**
  * Created by Trumeet on 2017/9/15.
  * @author Trumeet
@@ -13,8 +15,8 @@ import java.io.File;
 
 @TargetApi(Build.VERSION_CODES.KITKAT)
 class WrapperKK extends AbstractWrapper {
-    WrapperKK(Environment.UserEnvironment ue, int userId, String customPath) {
-        super(ue, userId, customPath);
+    WrapperKK(Environment.UserEnvironment ue, int userId, PathCallback callback) {
+        super(ue, userId, callback);
     }
 
     @Override

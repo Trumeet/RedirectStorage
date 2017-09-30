@@ -6,6 +6,8 @@ import android.os.Environment;
 
 import java.io.File;
 
+import top.trumeet.redirectstorage.PathCallback;
+
 /**
  * Created by Trumeet on 2017/9/15.
  * Wrapper for marshmallow+
@@ -14,8 +16,8 @@ import java.io.File;
 @TargetApi(Build.VERSION_CODES.M)
 class WrapperMM extends AbstractWrapper {
 
-    WrapperMM(Environment.UserEnvironment ue, int userId, String customPath) {
-        super(ue, userId, customPath);
+    WrapperMM(Environment.UserEnvironment ue, int userId, PathCallback callback) {
+        super(ue, userId, callback);
     }
 
     @Override

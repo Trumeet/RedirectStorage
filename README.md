@@ -8,12 +8,12 @@
 
 * Add it in your root build.gradle at the end of repositories:
 ```
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
 * 查詢最新版本
@@ -23,9 +23,9 @@
 * 添加依賴
 
 ```
-    dependencies {
-	        compile 'com.github.Trumeet:RedirectStorage:<最新版本號>'
-	}
+dependencies {
+        compile 'com.github.Trumeet:RedirectStorage:<最新版本號>'
+}
 ```
 
 # Usage
@@ -35,7 +35,7 @@
 ```java
 
 // 启用
-enable(String pathSuffix) // pathSuffix 是 加在原目录后面的后缀，详情见 JavaDoc
+enable(PathCallback callback) // 当需要 Hack 路径的时候的 Callback
 
 // 禁用
 disable()

@@ -7,6 +7,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import top.trumeet.redirectstorage.PathCallback;
+
 /**
  * Created by Trumeet on 2017/9/15.
  * @author Trumeet
@@ -14,7 +16,7 @@ import java.util.List;
 
 public abstract class AbstractWrapper extends Environment.UserEnvironment {
     public static AbstractWrapper getWrapper (Environment.UserEnvironment base,
-                                              String customPath,
+                                              PathCallback customPath,
                                               Integer userId) {
         checkNonNull(base);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -36,14 +38,14 @@ public abstract class AbstractWrapper extends Environment.UserEnvironment {
     }
 
     final Environment.UserEnvironment mBase;
-    String mCustomPath;
+    PathCallback callback;
     boolean mEnable = true;
 
     public AbstractWrapper(Environment.UserEnvironment ue,
-                                             int userId, String customPath) {
+                                             int userId, PathCallback callback) {
         super(userId);
         mBase = ue;
-        mCustomPath = customPath;
+        this.callback = callback;
     }
 
     public boolean isEnable() {
@@ -54,12 +56,8 @@ public abstract class AbstractWrapper extends Environment.UserEnvironment {
         this.mEnable = mEnable;
     }
 
-    public String getCustomPath() {
-        return mCustomPath;
-    }
-
-    public void setCustomPath(String mCustomPath) {
-        this.mCustomPath = mCustomPath;
+    public void setCallback (PathCallback callback) {
+        this.callback = callback;
     }
 
     public abstract File getRealExternalStorageDirectory ();
@@ -69,7 +67,7 @@ public abstract class AbstractWrapper extends Environment.UserEnvironment {
             return dirs;
         List<File> list = new ArrayList<>(dirs.length);
         for (File file : dirs) {
-            list.add(new File(file.getAbsolutePath() + mCustomPath));
+            list.add(callback.onModify(file));
         }
         return list.toArray(new File[list.size()]);
     }

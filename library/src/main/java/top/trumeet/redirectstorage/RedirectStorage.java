@@ -28,12 +28,11 @@ public class RedirectStorage {
 
     /**
      * 安装并启用。
-     * @param pathSuffix 合并到原目录后面的路径。比如说要重定向到
-     *                   SD卡/ABC，那么传递 ABC。
+     * @param callback 当修改路径时的 Callback
      */
-    public static void enable (String pathSuffix) {
+    public static void enable (PathCallback callback) {
         try {
-            invokeEnvironmentSdcardMethod(pathSuffix);
+            invokeEnvironmentSdcardMethod(callback);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -126,13 +125,13 @@ public class RedirectStorage {
         }
     }
 
-    private static void invokeEnvironmentSdcardMethod(String target)
+    private static void invokeEnvironmentSdcardMethod(PathCallback callback)
             throws NoSuchMethodException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
         Field sCurrentUserField = getCurrentUserField();
         AbstractWrapper wrapper = getInstalledWrapper(sCurrentUserField);
         if (wrapper != null) {
             // Update current wrapper
-            wrapper.setCustomPath(target);
+            wrapper.setCallback(callback);
             wrapper.setEnable(true);
         } else {
             // Install new wrapper
@@ -147,7 +146,7 @@ public class RedirectStorage {
                 e.printStackTrace();
             }
             AbstractWrapper abstractWrapper = AbstractWrapper.getWrapper(o,
-                    target, user);
+                    callback, user);
             if (abstractWrapper == null) {
                 Log.e(TAG, "Can not create wrapper, it looks like not support your ROM: " +
                         Build.VERSION.SDK_INT);
